@@ -1,0 +1,34 @@
+%Datos de MU y Sigma para Calzado 
+MUc=mean(Calzado);
+SIGc=std(Calzado);
+
+%Datos de MU y Sigma para Estatura 
+MUe=mean(Estatura);
+SIGe=std(Estatura);
+
+%Rango de valores de X para estatura de acuerdo al mínimo y máximo. 
+xe=140:1:200;
+ye= 1/sqrt(2*pi*SIGe^2)*exp(-(xe-MUe).^2/(2*SIGe^2));
+plot (xe,ye);
+hist(Estatura,40);
+
+%Rango de valores de X para calzado de acuerdo al mínimo y máximo. 
+xc= 18:0.5:32;
+yc= 1/sqrt(2*pi*SIGc^2)*exp(-(xc-MUc).^2/(2*SIGc^2));
+plot (xc,yc);
+hist(Calzado,25);
+
+%Probabilidad de 1 
+%Z = x-MU/SIG
+%x = MU + 1(SIG)
+
+%Probabilidad para estatura 
+Zep=((MUe+1*SIGe)-MUe)/SIGe;
+Zen=((MUe-1*SIGe)-MUe)/SIGe;
+
+%Buscando en tablas los valores para Zep y Zen
+Zep= 0.8413;
+Zen= 0.1587;
+Pe=(Zep-Zen)*100 
+
+%Aproximación lineal 
